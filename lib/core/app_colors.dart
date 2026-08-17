@@ -6,4 +6,7 @@ class AppColors {
   static const greyBgColor = Color(0xffE1E5DE);
   static const whiteColor = Colors.white;
   static const gradientWhiteColor = Color(0xffFAFCFF);
+  static const plantItemColor1 = Color(0xFFEDE8E3);
+  static const plantItemColor2 = Color(0xFFEDE8E3);
+  static const plantItemColor13 = Color(0xFFE3EDE3);
 }

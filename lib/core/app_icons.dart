@@ -9,5 +9,7 @@ class AppIcons {
   static const icDelete = '${_iconsPaths}ic_delete.svg';
 
   //Pngs
+  static const pottedHeadPlant = '${_iconsPaths}potted_head_plant.png';
   static const palmTree = '${_iconsPaths}palm_tree.png';
+  static const palmBlissPlant = '${_iconsPaths}palm_bliss_plant.png';
 }
