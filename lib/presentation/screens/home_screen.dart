@@ -6,10 +6,8 @@ import 'package:plants_app/core/app_data.dart';
 import 'package:plants_app/core/app_gradients.dart';
 import 'package:plants_app/core/app_icons.dart';
 import 'package:plants_app/core/app_textstyles.dart';
-import 'package:plants_app/presentation/widgets/plant_card_item_widget.dart';
 import 'package:plants_app/presentation/widgets/plant_category_item_widget.dart';
-import 'package:plants_app/providers/home_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:plants_app/presentation/widgets/swipeable_plant_item_card.dart';
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
@@ -73,35 +71,40 @@ class HomeScreen extends StatelessWidget{
                 SvgPicture.asset(AppIcons.icNext)
               ],
             ),),
-            Expanded(
-              child: Consumer<HomeProvider>(
-                builder: (_, provider, _) {
-                  return Padding(padding: .only(top: 8), child: PageView.builder(
-                    controller: provider.pageController,
-                    itemCount: AppData.plants.length,
-                    itemBuilder: (context, index) {
-                      // Distance from center determines scale & opacity
-                      final distance = (provider.currentIndex - index).abs();
-                      final scale = (1 - distance * 0.12).clamp(0.88, 1.0);
-                      final opacity = (1 - distance * 0.4).clamp(0.6, 1.0);
-
-                      return Transform.scale(
-                        scale: scale,
-                        child: Opacity(
-                          opacity: opacity,
-                          child: PlantCard(plant: AppData.plants[index]),
+            Expanded(child: SwipeablePlantCards()),
+            Stack(
+              alignment: .center,
+              children: [
+                Image.asset(AppIcons.cartRectangleShape, fit: .cover,),
+                Padding(
+                  padding: const .symmetric(horizontal: 24.0),
+                  child: Row(
+                    spacing: 16,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.whiteColor,
+                          shape: .circle
                         ),
-                      );
-                    },
-                  ),);
-                }
-              ),
+                        padding: .symmetric(horizontal: 16, vertical: 8),
+                        child: Text('4', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold),),
+                      ),
+                      Column(
+                        crossAxisAlignment: .start,
+                        children: [
+                          Text("Cart", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 20, fontWeight: .bold, color:AppColors.whiteColor),),
+                          Text("4 items", style: AppTextStyles.mediumTextStyle.copyWith(color: Colors.white),)
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
             )
           ],
         ),
       )
     );
   }
-
 
 }

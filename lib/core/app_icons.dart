@@ -12,4 +12,6 @@ class AppIcons {
   static const pottedHeadPlant = '${_iconsPaths}potted_head_plant.png';
   static const palmTree = '${_iconsPaths}palm_tree.png';
   static const palmBlissPlant = '${_iconsPaths}palm_bliss_plant.png';
+
+  static const cartRectangleShape = '${_iconsPaths}cart_shape_rectangle.png';
 }
