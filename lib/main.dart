@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:plants_app/constants/string_const.dart';
+import 'package:plants_app/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +12,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: StringConst.appTitle,
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(body: Center(child: Text("Plants app UI"),),)
+      routerConfig: router,
+      builder: (ctx, child) => child!,
     );
   }
 }
