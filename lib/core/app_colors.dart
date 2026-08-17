@@ -5,4 +5,5 @@ class AppColors {
   static const greyColor = Color(0xff8B8B8B);
   static const greyBgColor = Color(0xffE1E5DE);
   static const whiteColor = Colors.white;
+  static const gradientWhiteColor = Color(0xffFAFCFF);
 }
