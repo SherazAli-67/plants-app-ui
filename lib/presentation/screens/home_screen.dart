@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plants_app/core/app_gradients.dart';
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
@@ -6,7 +7,11 @@ class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Center(child: Text("Home Screen"),)),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: AppGradients.primaryBgGradient
+        ),
+      )
     );
   }
 }

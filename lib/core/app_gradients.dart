@@ -7,9 +7,11 @@ class AppGradients {
       colors: [
         AppColors.whiteColor,
         AppColors.primaryGreenColor],
-    stops: [
-      0.0,
-      1.0
-    ]
+      stops: [
+        0.0,
+        1.0
+      ],
+    begin: .topCenter,
+    end: .bottomCenter
   );
 }
