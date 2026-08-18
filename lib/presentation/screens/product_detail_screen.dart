@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plants_app/core/app_icons.dart';
 import 'package:plants_app/core/models/plant_item_model.dart';
 import '../../constants/string_const.dart';
@@ -58,36 +59,68 @@ class ProductDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              mainAxisAlignment: .center,
+            Padding(
+              padding: const EdgeInsets.only(bottom:140.0),
+              child: Image.asset(plant.image,),
+            ),
+            Positioned(
+              bottom: 100,
+              right: 0,
+              left: 0,
+              child: Column(
+                mainAxisAlignment: .center,
+                children: [
+
+                  Row(
+                    children: [
+                      Stack(
+                        alignment: .center,
+                        children: [
+                          Image.asset(AppIcons.mountainShapedVectorLeftSide),
+                          IconButton(onPressed: (){}, icon: Icon(Icons.remove, color: Colors.white, size: 40,))
+                        ],
+                      ),
+                      Expanded(child: Column(
+                        children: [
+                          Text(plant.description,textAlign: .center, style: AppTextStyles.mediumTextStyle.copyWith(fontSize: 16, fontStyle: .italic, color: AppColors.whiteColor, fontWeight: .w400),),
+                          Text('02', style: AppTextStyles.headingTextStyle.copyWith(fontSize: 60, fontWeight: .bold, color: Colors.white),)
+                        ],
+                      )),
+                      Stack(
+                        alignment: .center,
+                        children: [
+                          Image.asset(AppIcons.mountainShapedVectorRightSide),
+                          IconButton(onPressed: (){}, icon: Icon(Icons.add_rounded, color: Colors.white, size: 40,))
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Positioned(
+                bottom: 32,
+                left: 24,
+                right: 24,
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryGreenColor,elevation: 0, padding: .only(right: 24)),
+                    onPressed: (){}, child: Row(
+                  spacing: 12,
               children: [
-                Image.asset(plant.image, fit: .cover,),
-                Row(
-                  children: [
-                    Stack(
-                      alignment: .center,
-                      children: [
-                        Image.asset(AppIcons.mountainShapedVectorLeftSide),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.remove, color: Colors.white, size: 40,))
-                      ],
-                    ),
-                    Expanded(child: Column(
-                      children: [
-                        Text(plant.description,textAlign: .center, style: AppTextStyles.mediumTextStyle.copyWith(fontSize: 16, fontStyle: .italic, color: AppColors.whiteColor, fontWeight: .w400),),
-                        Text('02', style: AppTextStyles.headingTextStyle.copyWith(fontSize: 60, fontWeight: .bold, color: Colors.white),)
-                      ],
-                    )),
-                    Stack(
-                      alignment: .center,
-                      children: [
-                        Image.asset(AppIcons.mountainShapedVectorRightSide),
-                        IconButton(onPressed: (){}, icon: Icon(Icons.add_rounded, color: Colors.white, size: 40,))
-                      ],
-                    ),
-                  ],
-                )
+                Container(
+                  margin: .all(8),
+                  decoration: BoxDecoration(
+                    color: AppColors.whiteColor,
+                    shape: .circle
+                  ),
+                  padding: .all(16),
+                  child: SvgPicture.asset(AppIcons.icDelete, colorFilter: .mode(Colors.black, .srcIn),),
+                ),
+                Text("Add to Cart", style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.whiteColor),),
+                const Spacer(),
+                Text("\$${50.0}", style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.whiteColor),)
               ],
-            )
+            )))
           ],
         ),
       ),
