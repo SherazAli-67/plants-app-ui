@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:plants_app/core/models/plant_item_model.dart';
+import 'package:plants_app/presentation/screens/checkout_screen.dart';
 import 'package:plants_app/presentation/screens/home_screen.dart';
 import 'package:plants_app/presentation/screens/product_detail_screen.dart';
 import 'package:plants_app/providers/home_provider.dart';
@@ -12,13 +13,15 @@ GoRouter router = GoRouter(
         create: (_) => HomeProvider(),
         builder: (_, child) => HomeScreen()
       )),
-      GoRoute(path: NamedRoutes.productDetail.routeName, builder: (_, state) => ProductDetailScreen(plant: state.extra as PlantItemModel))
+      GoRoute(path: NamedRoutes.productDetail.routeName, builder: (_, state) => ProductDetailScreen(plant: state.extra as PlantItemModel)),
+      GoRoute(path: NamedRoutes.cart.routeName, builder: (_, state) => CheckoutScreen())
     ],
 );
 
 enum NamedRoutes {
   home('/home'),
-  productDetail('/product-detail')
+  productDetail('/product-detail'),
+  cart('/cart')
   ;
 
   final String routeName;

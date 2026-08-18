@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:plants_app/core/app_icons.dart';
 import 'package:plants_app/core/models/plant_item_model.dart';
+import 'package:plants_app/router/app_router.dart';
 import '../../constants/string_const.dart';
 import '../../core/app_colors.dart';
 import '../../core/app_gradients.dart';
@@ -104,7 +106,7 @@ class ProductDetailScreen extends StatelessWidget {
                 right: 24,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryGreenColor,elevation: 0, padding: .only(right: 24)),
-                    onPressed: (){}, child: Row(
+                    onPressed: ()=> context.push(NamedRoutes.cart.routeName), child: Row(
                   spacing: 12,
               children: [
                 Container(

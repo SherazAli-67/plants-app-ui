@@ -14,4 +14,18 @@ class AppGradients {
     begin: .topCenter,
     end: .bottomCenter
   );
+
+  static final cartBgGradient = LinearGradient(
+
+      colors: [
+        AppColors.gradientWhiteBgColor,
+        AppColors.gradientWhiteBgColor.withValues(alpha: 0.0),
+      ],
+      stops: [
+        0.0,
+        1.0
+      ],
+      begin: .topCenter,
+      end: .bottomCenter
+  );
 }
