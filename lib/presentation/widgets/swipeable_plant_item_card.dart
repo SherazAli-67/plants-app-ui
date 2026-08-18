@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
+import 'package:plants_app/router/app_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/app_data.dart';
 import '../../providers/home_provider.dart';
@@ -50,12 +52,15 @@ class SwipeablePlantCards extends StatelessWidget{
                         clipBehavior: Clip.none,
                         children: [
                           for (final index in indices)
-                            _buildStackedCard(
-                              index: index,
-                              page: page,
-                              cardWidth: cardWidth,
-                              cardHeight: constraints.maxHeight,
-                              peekDistance: peekDistance,
+                            GestureDetector(
+                              onTap: ()=> context.push(NamedRoutes.productDetail.routeName, extra: AppData.plants[index]),
+                              child: _buildStackedCard(
+                                index: index,
+                                page: page,
+                                cardWidth: cardWidth,
+                                cardHeight: constraints.maxHeight,
+                                peekDistance: peekDistance,
+                              ),
                             ),
                         ],
                       );
