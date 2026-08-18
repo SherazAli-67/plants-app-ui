@@ -13,6 +13,7 @@ class AppIcons {
   static const palmTree = '${_iconsPaths}palm_tree.png';
   static const palmBlissPlant = '${_iconsPaths}palm_bliss_plant.png';
   static const cartRectangleShape = '${_iconsPaths}cart_shape_rectangle.png';
+  static const carScreenRectangleShape = '${_iconsPaths}cart_screen_shape.png';
   static const mountainShapedVectorLeftSide = '${_iconsPaths}mountain_shaped_vector.png';
   static const mountainShapedVectorRightSide = '${_iconsPaths}mountain_shaped_vector_rightside.png';
 }

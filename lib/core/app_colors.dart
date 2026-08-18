@@ -11,4 +11,5 @@ class AppColors {
   static const plantItemColor13 = Color(0xFFE3EDE3);
   static const blueGreenColor = Color(0xff014D2C);
   static const gradientWhiteBgColor = Color(0xffDCEBFE);
+  static const dividerColor = Color(0xff105D5C);
 }

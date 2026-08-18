@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plants_app/core/app_colors.dart';
 import 'package:plants_app/core/app_icons.dart';
 import 'package:plants_app/core/app_textstyles.dart';
-import 'package:plants_app/core/models/cart_item_model.dart';
 import 'package:plants_app/core/models/plant_item_model.dart';
 import 'package:plants_app/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
