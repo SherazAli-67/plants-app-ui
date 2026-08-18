@@ -4,9 +4,16 @@ import '../core/models/cart_item_model.dart';
 class CartProvider extends ChangeNotifier{
   List<CartItemModel> cartItems = [];
 
-
+  List<String> get _cartItemPlantIds => cartItems.map((cartItem) => cartItem.product.id).toList();
   void addItemToCart(CartItemModel plant){
-    cartItems.add(plant);
+    if(_cartItemPlantIds.contains(plant.product.id)){
+      int index = cartItems.indexWhere((cartItem) => cartItem.product.id == plant.product.id);
+      CartItemModel cartItem = cartItems[index];
+      final updatedCartItem  = cartItem.copyWith(quantity: cartItem.quantity+1);
+      cartItems[index] = updatedCartItem;
+    }else{
+      cartItems.add(plant);
+    }
     notifyListeners();
   }
 

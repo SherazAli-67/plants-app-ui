@@ -83,7 +83,7 @@ class PlantCard extends StatelessWidget {
   }
   
   void onAddToCartTap(BuildContext context){
-    final provider = Provider.of<CartProvider>(context);
+    final provider = Provider.of<CartProvider>(context, listen: false);
     provider.addItemToCart(CartItemModel(id: DateTime.now().toIso8601String(), product: plant, quantity: 1));
   }
 }

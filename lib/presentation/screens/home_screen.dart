@@ -80,10 +80,10 @@ class HomeScreen extends StatelessWidget{
               children: [
                 Image.asset(AppIcons.cartRectangleShape, fit: .cover,),
 
-                Padding(
+                if( cartProvider.cartItems.isNotEmpty)
+                  Padding(
                   padding: const .symmetric(horizontal: 24.0),
-                  child: Row(
-                    // mainAxisAlignment: .spaceBetween,
+                  child:Row(
                     children: [
                       Row(
                         spacing: 16,
@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget{
                               shape: .circle
                             ),
                             padding: .symmetric(horizontal: 16, vertical: 8),
-                            child: Text('4', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold),),
+                            child: Text('${cartProvider.cartItems.length}', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold),),
                           ),
                           Column(
                             crossAxisAlignment: .start,
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget{
                         ),
                       ),
                     ],
-                  ),
+                  )
                 )
               ],
             )
