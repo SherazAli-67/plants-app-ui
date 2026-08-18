@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:plants_app/constants/string_const.dart';
+import 'package:plants_app/providers/cart_provider.dart';
 import 'package:plants_app/router/app_router.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => CartProvider())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

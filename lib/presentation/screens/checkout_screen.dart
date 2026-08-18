@@ -14,6 +14,7 @@ class CheckoutScreen extends StatelessWidget{
           gradient: AppGradients.cartBgGradient
         ),
         child: Padding(padding: .symmetric(horizontal: 24, vertical: 50), child: Column(
+          spacing: 22,
           children: [
             Row(
               mainAxisAlignment: .spaceBetween,
@@ -28,7 +29,16 @@ class CheckoutScreen extends StatelessWidget{
                   child: Text('4', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold, color: Colors.white),),
                 ),
               ],
-            )
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: .circular(99)
+              ),
+              height: 4,
+              width: 60,
+            ),
+            // Expanded(child: ListView.separated(itemBuilder: (ctx, index) => , separatorBuilder: (ctx, index) => Divider(), itemCount: AppData.ca))
           ],
         ),),
       ),

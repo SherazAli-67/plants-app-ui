@@ -63,7 +63,7 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom:140.0),
-              child: Image.asset(plant.image,),
+              child: Hero(tag: plant.id, child: Image.asset(plant.image,),)
             ),
             Positioned(
               bottom: 100,

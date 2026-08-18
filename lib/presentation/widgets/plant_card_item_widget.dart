@@ -28,7 +28,9 @@ class PlantCard extends StatelessWidget {
                 color: AppColors.greyBgColor,
                 borderRadius: .circular(28),
               ),
-              child: Image.asset(plant.image, fit: BoxFit.contain,),
+              child: Hero(
+                  tag: plant.id,
+                  child: Image.asset(plant.image, fit: BoxFit.contain,)),
             ),
           ),
           Column(
