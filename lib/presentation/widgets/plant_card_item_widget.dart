@@ -3,7 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plants_app/core/app_colors.dart';
 import 'package:plants_app/core/app_icons.dart';
 import 'package:plants_app/core/app_textstyles.dart';
+import 'package:plants_app/core/models/cart_item_model.dart';
 import 'package:plants_app/core/models/plant_item_model.dart';
+import 'package:plants_app/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class PlantCard extends StatelessWidget {
   final PlantItemModel plant;
@@ -51,7 +54,7 @@ class PlantCard extends StatelessWidget {
             ],
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () => onAddToCartTap(context),
             child: Container(
               width: .infinity,
               padding: const .symmetric(horizontal: 20, vertical: 16),
@@ -77,5 +80,10 @@ class PlantCard extends StatelessWidget {
         ],
       ),
     );
+  }
+  
+  void onAddToCartTap(BuildContext context){
+    final provider = Provider.of<CartProvider>(context);
+    provider.addItemToCart(CartItemModel(id: DateTime.now().toIso8601String(), product: plant, quantity: 1));
   }
 }

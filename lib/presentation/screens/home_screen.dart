@@ -8,12 +8,15 @@ import 'package:plants_app/core/app_icons.dart';
 import 'package:plants_app/core/app_textstyles.dart';
 import 'package:plants_app/presentation/widgets/plant_category_item_widget.dart';
 import 'package:plants_app/presentation/widgets/swipeable_plant_item_card.dart';
+import 'package:plants_app/providers/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -76,6 +79,7 @@ class HomeScreen extends StatelessWidget{
               alignment: .center,
               children: [
                 Image.asset(AppIcons.cartRectangleShape, fit: .cover,),
+
                 Padding(
                   padding: const .symmetric(horizontal: 24.0),
                   child: Row(
@@ -96,7 +100,7 @@ class HomeScreen extends StatelessWidget{
                             crossAxisAlignment: .start,
                             children: [
                               Text("Cart", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 20, fontWeight: .bold, color:AppColors.whiteColor),),
-                              Text("4 items", style: AppTextStyles.mediumTextStyle.copyWith(color: Colors.white),)
+                              Text("${cartProvider.cartItems.length} items", style: AppTextStyles.mediumTextStyle.copyWith(color: Colors.white),)
                             ],
                           )
                         ],
@@ -104,18 +108,12 @@ class HomeScreen extends StatelessWidget{
                       Expanded(
                         child: Stack(
                           alignment: .topRight,
-                          children: [
-                            _buildCartItemWidget(cartItem: AppIcons.pottedHeadPlant),
-                            Positioned(
-                              right: 30,
-                              child: _buildCartItemWidget(cartItem: AppIcons.palmBlissPlant),),
-                            Positioned(
-                              right: 60,
-                              child: _buildCartItemWidget(cartItem: AppIcons.palmTree),),
-                            Positioned(
-                              right: 90,
-                              child: _buildCartItemWidget(cartItem: AppIcons.pottedHeadPlant),),
-                          ],
+                          children: List.generate(cartProvider.cartItems.length, (index){
+                            String cartItem = cartProvider.cartItems[index].product.image;
+                            return index == 0 ? _buildCartItemWidget(cartItem: cartItem) :  Positioned(
+                              right: index * 30,
+                              child: _buildCartItemWidget(cartItem: AppIcons.palmBlissPlant),);
+                          })
                         ),
                       ),
                     ],
