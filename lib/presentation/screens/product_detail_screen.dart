@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plants_app/core/app_icons.dart';
 import 'package:plants_app/core/models/plant_item_model.dart';
+import 'package:plants_app/providers/cart_provider.dart';
 import 'package:plants_app/router/app_router.dart';
+import 'package:provider/provider.dart';
 import '../../constants/string_const.dart';
 import '../../core/app_colors.dart';
 import '../../core/app_gradients.dart';
@@ -12,17 +14,17 @@ import '../../core/app_textstyles.dart';
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key, required this.plant});
   final PlantItemModel plant;
+
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(gradient: AppGradients.primaryBgGradient),
         child: Stack(
           alignment: .center,
           children: [
-            Center(
-              child:FittedBox(child: Text("Plants", style: AppTextStyles.headingTextStyle.copyWith(fontSize: 160, fontWeight: .bold, color: AppColors.whiteColor.withValues(alpha: 0.2), ),)),
-            ),
+            Center(child:FittedBox(child: Text("Plants", style: AppTextStyles.headingTextStyle.copyWith(fontSize: 160, fontWeight: .bold, color: AppColors.whiteColor.withValues(alpha: 0.2), ),)),),
             Column(
               children: [
                 Padding(
@@ -79,20 +81,20 @@ class ProductDetailScreen extends StatelessWidget {
                         alignment: .center,
                         children: [
                           Image.asset(AppIcons.mountainShapedVectorLeftSide),
-                          IconButton(onPressed: (){}, icon: Icon(Icons.remove, color: Colors.white, size: 40,))
+                          IconButton(onPressed: ()=> cartProvider.onDecreaseQuantityTap(plantID: plant.id), icon: Icon(Icons.remove, color: Colors.white, size: 40,))
                         ],
                       ),
                       Expanded(child: Column(
                         children: [
                           Text(plant.description,textAlign: .center, style: AppTextStyles.mediumTextStyle.copyWith(fontSize: 16, fontStyle: .italic, color: AppColors.whiteColor, fontWeight: .w400),),
-                          Text('02', style: AppTextStyles.headingTextStyle.copyWith(fontSize: 60, fontWeight: .bold, color: Colors.white),)
+                          Text(cartProvider.getFormattedCartItemQuantityByPlanID(plant.id), style: AppTextStyles.headingTextStyle.copyWith(fontSize: 60, fontWeight: .bold, color: Colors.white),)
                         ],
                       )),
                       Stack(
                         alignment: .center,
                         children: [
                           Image.asset(AppIcons.mountainShapedVectorRightSide),
-                          IconButton(onPressed: (){}, icon: Icon(Icons.add_rounded, color: Colors.white, size: 40,))
+                          IconButton(onPressed: ()=> cartProvider.addItemToCart(plant), icon: Icon(Icons.add_rounded, color: Colors.white, size: 40,))
                         ],
                       ),
                     ],
@@ -120,7 +122,7 @@ class ProductDetailScreen extends StatelessWidget {
                 ),
                 Text("Add to Cart", style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.whiteColor),),
                 const Spacer(),
-                Text("\$${50.0}", style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.whiteColor),)
+                Text("\$${plant.price * cartProvider.getCartItemQuantityByPlanID(plant.id)}", style: AppTextStyles.btnTextStyle.copyWith(color: AppColors.whiteColor),)
               ],
             )))
           ],
