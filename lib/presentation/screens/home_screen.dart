@@ -79,23 +79,45 @@ class HomeScreen extends StatelessWidget{
                 Padding(
                   padding: const .symmetric(horizontal: 24.0),
                   child: Row(
-                    spacing: 16,
+                    // mainAxisAlignment: .spaceBetween,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.whiteColor,
-                          shape: .circle
-                        ),
-                        padding: .symmetric(horizontal: 16, vertical: 8),
-                        child: Text('4', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold),),
-                      ),
-                      Column(
-                        crossAxisAlignment: .start,
+                      Row(
+                        spacing: 16,
                         children: [
-                          Text("Cart", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 20, fontWeight: .bold, color:AppColors.whiteColor),),
-                          Text("4 items", style: AppTextStyles.mediumTextStyle.copyWith(color: Colors.white),)
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.whiteColor,
+                              shape: .circle
+                            ),
+                            padding: .symmetric(horizontal: 16, vertical: 8),
+                            child: Text('4', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold),),
+                          ),
+                          Column(
+                            crossAxisAlignment: .start,
+                            children: [
+                              Text("Cart", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 20, fontWeight: .bold, color:AppColors.whiteColor),),
+                              Text("4 items", style: AppTextStyles.mediumTextStyle.copyWith(color: Colors.white),)
+                            ],
+                          )
                         ],
-                      )
+                      ),
+                      Expanded(
+                        child: Stack(
+                          alignment: .topRight,
+                          children: [
+                            _buildCartItemWidget(cartItem: AppIcons.pottedHeadPlant),
+                            Positioned(
+                              right: 30,
+                              child: _buildCartItemWidget(cartItem: AppIcons.palmBlissPlant),),
+                            Positioned(
+                              right: 60,
+                              child: _buildCartItemWidget(cartItem: AppIcons.palmTree),),
+                            Positioned(
+                              right: 90,
+                              child: _buildCartItemWidget(cartItem: AppIcons.pottedHeadPlant),),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -104,6 +126,18 @@ class HomeScreen extends StatelessWidget{
           ],
         ),
       )
+    );
+  }
+
+  Widget _buildCartItemWidget({required String cartItem}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          shape: .circle,
+          border: .all(color: AppColors.primaryGreenColor, width: 5)
+      ),
+      padding: .symmetric(horizontal: 10, vertical: 4),
+      child: Image.asset(cartItem, height: 40, width: 26,),
     );
   }
 
