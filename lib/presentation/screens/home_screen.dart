@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget{
               margin: .only(left: 24),
               child: ListView.builder(
                   scrollDirection: .horizontal,
-                  itemBuilder: (_, index) => PlantCategoryItemWidget(category: AppData.categories[index], isSelected: index == 0),itemCount: AppData.categories.length),
+                  itemBuilder: (_, index) => PlantCategoryItemWidget(categoryIndex: index,),itemCount: AppData.categories.length,),
             ),
             Padding(padding: .symmetric(horizontal: 24), child: Row(
               crossAxisAlignment: .center,
