@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget{
           spacing: 32,
           children: [
             Padding(
-              padding: .only(left: 24, right: 24, top: 40),
+              padding: .only(left: 24, right: 24, top: 57),
               child: Row(
                 children: [
                   Expanded(

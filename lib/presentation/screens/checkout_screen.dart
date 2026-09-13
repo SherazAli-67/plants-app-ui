@@ -31,7 +31,7 @@ class CheckoutScreen extends StatelessWidget{
                       shape: .circle
                   ),
                   padding: .symmetric(horizontal: 16, vertical: 8),
-                  child: Text('4', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold, color: Colors.white),),
+                  child: Text('${provider.cartItems.length}', style: AppTextStyles.subHeadingTextStyle.copyWith(fontWeight: .bold, color: Colors.white),),
                 ),
               ],
             ),

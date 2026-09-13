@@ -34,10 +34,7 @@ class ProductDetailScreen extends StatelessWidget {
                       Expanded(
                         child: RichText(text: TextSpan(
                             text: '$plantTitleHeadingText\n',
-                            style: AppTextStyles.headingTextStyle.copyWith(
-                                color: AppColors.primaryGreenColor,
-                                fontFamily: StringConst.appFontFamily
-                            ),
+                            style: AppTextStyles.headingTextStyle.copyWith(color: AppColors.primaryGreenColor, fontFamily: StringConst.appFontFamily),
                             children: [
                               TextSpan(
                                 text: plantTitleSubHeadingText,
